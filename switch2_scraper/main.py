@@ -14,7 +14,7 @@ def main():
     # Get games
     print('Scraping game lists...')
     all_games = []
-    for page in range(1, 7): #6 pages of games at the moment of making it
+    for page in range(1, 8): #7 pages of games at the moment of making it
         games = game_scraper.scrape_browse_page(page)
         all_games.extend(games)
         print(f'Page {page}: {len(games)} games')
@@ -25,10 +25,12 @@ def main():
     # Get reviews
     print('\nScraping reviews...')
     all_reviews = []
-    for game in all_games[:5]:
-        reviews = review_scraper.scrape_game_reviews(game.url, game.name)
-        all_reviews.extend(reviews)
-        print(f'{game.name}: {len(reviews)} reviews')
+    for game in all_games:
+        print(f'Processing {game.name}...')
+        review_links = review_scraper.scrape_review_links(game)
+        for review_link in review_links:
+            full_review = review_scraper.scrape_full_review(review_link)
+            all_reviews.append(full_review)
         
     reviews_df = reviews_to_df(all_reviews)
     save_reviews(reviews_df)
