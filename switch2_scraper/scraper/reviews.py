@@ -16,7 +16,7 @@ class ReviewScraper:
     def scrape_game_reviews(self, game_url: str, game_name: str) -> List[Review]: #Type Hint
         soup = self.client.get_page(game_url)
         
-        # UPDATE THESE SELECTORS after inspecting game pages
+        # UPDATE after inspecting game pages
         review_divs = soup.find_all('div', class_='review-item')
         reviews = []
         
@@ -29,4 +29,5 @@ class ReviewScraper:
                     text=text_el.get_text(strip=True)[:500],
                     score=score_el.get_text(strip=True)
                 ))
+        
         return reviews
