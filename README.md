@@ -28,3 +28,4 @@ This repo consists of 3 folders, one for each step in the process. We will go ov
         - evaluate_random_forest_regression; to evaluate a random forest regresssior.
 
     - Contains a notebook in which you can run and test above mentioned functions to train the models.
+
