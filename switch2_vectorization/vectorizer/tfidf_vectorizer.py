@@ -34,17 +34,22 @@ def vectorize_reviews(texts, vectorizer):
     X = vectorizer.fit_transform(texts)
     return X
 
-
+# New version, changed the output files from pickle to csv, which is easier to handle for the random forest regression model.
 def save_outputs(X, y, vectorizer, output_dir="data"):
-    """Save features and vectorizer."""
+    """Save features and vectorizer as DataFrame."""
 
     os.makedirs(output_dir, exist_ok=True)
 
-    with open(f"{output_dir}/X_features.pkl", "wb") as f:
-        pickle.dump(X, f)
+    # Converting the vectorized reviews to a DataFrame.
+    X_df = pd.DataFrame(X.toarray(), columns=vectorizer.get_feature_names_out())
 
-    with open(f"{output_dir}/y_scores.pkl", "wb") as f:
-        pickle.dump(y, f)
+    # Saving the dataframe as CSV.
+    X_df.to_csv(f"{output_dir}/X_features.csv", index=False)
 
+    # Saving the score as CSV.
+    y_df = pd.DataFrame(y, columns=["score"])
+    y_df.to_csv(f"{output_dir}/y_scores.csv", index=False)
+
+    # Saving the vectorizer as pickle, which can be loaded later if needed.
     with open(f"{output_dir}/tfidf_vectorizer.pkl", "wb") as f:
         pickle.dump(vectorizer, f)
