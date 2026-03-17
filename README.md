@@ -11,7 +11,18 @@ Please note that some paths to the files might have to be changed accordingly, d
 This repo consists of 3 folders, one for each step in the process. We will go over them in this file.
 
 1. switch2_scraper
-
+    - Contains a module called 'scraper' and 'data', which is used to scrape raw text from the NintendoLife website and convert it into a dataframe.
+    - After importing the model 'scraper' you can use:
+        - NintendoLifeClient; to initialize HTTP client with rate limiting.
+        - scrape_browse_page; to scrape Switch 2 games from the browse page.
+        - scrape_review_links; to extract review URLs from game pages.
+        - scrape_full_review; to extract scores and full multi-paragraph review text from review pages.
+    - After importing the model 'data' you can use:
+        - games_to_df; to convert game list ot pandas DataFrame.
+        - reviews_to_df; to convert review list to DataFrame with game/review/score/text columns.
+        - save_reviews; to export reviews to CSV
+    - Contains main.py script that runs the full pipeline
+    - The resulting files are used as input for the vectorizer
 2. switch2_vectorization
     - Contains a module called 'vectorizer', which is used to convert the review text into numerical features
       using TF-IDF vectorization.
