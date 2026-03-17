@@ -13,7 +13,20 @@ This repo consists of 3 folders, one for each step in the process. We will go ov
 1. switch2_scraper
 
 2. switch2_vectorization
-
+    - Contains a module called 'vectorizer', which is used to convert the review text into numerical features
+      using TF-IDF vectorization.
+    - After importing the model you can use:
+        - load_dataset; to load the scraped review dataset from the csv file and perform basic data cleaning.
+     
+        - create_vectorizer; to initialize the TF-IDF vectorizer with predefined parameters.
+     
+        - vectorize_reviews; to transform the review text into a TF-IDF feature matrix.
+     
+        - save_outputs; to store the generated feature matrix (X), review scores (y) and the trained vectorizer object in the data folder as csv files.
+    
+    - The resulting files are used as input for the modelling step in the project.
+    - Contains a script that runs the full vectorization pipeline, starting from the scraped csv file and
+      producing the feature matrix and saved objects required for the modelling stage.
 3. switch2_modelling
     - Contains a module called 'model', after importing model you can use:
         - data_preparation; to split the data in train and test data.
