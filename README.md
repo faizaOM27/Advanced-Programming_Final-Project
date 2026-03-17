@@ -22,7 +22,11 @@ This repo consists of 3 folders, one for each step in the process. We will go ov
      
         - vectorize_reviews; to transform the review text into a TF-IDF feature matrix.
      
-        - save_outputs; to store the generated feature matrix (X), review scores (y) and the trained                   vectorizer object in the data folder as csv files.
+        - save_outputs; to store the generated feature matrix (X), review scores (y) and the trained vectorizer object in the data folder as csv files.
+    
+    - The resulting files are used as input for the modelling step in the project.
+    - Contains a script that runs the full vectorization pipeline, starting from the scraped csv file and
+      producing the feature matrix and saved objects required for the modelling stage.
 3. switch2_modelling
     - Contains a module called 'model', after importing model you can use:
         - data_preparation; to split the data in train and test data.
