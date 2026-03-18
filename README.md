@@ -6,7 +6,7 @@ several different models. Right now the models available for training are a rand
 gradient boosting model. 
 
 For running this project, please create a new environment and install the depencies as listed in the requirements.txt
-Please note that some paths to the files might have to be changed accordingly, dependending on where you run the code.
+Please note that some paths to the files might have to be changed accordingly, dependending on where you run the code, if you just run the functions like described below it should work.
 
 This repo consists of 3 folders, one for each step in the process. We will go over them in this file.
 
@@ -51,5 +51,5 @@ This repo consists of 3 folders, one for each step in the process. We will go ov
         - train_random_forest_regression; to train a random forest regressior.
         - evaluate_random_forest_regression; to evaluate a random forest regresssior.
 
-    - Contains a notebook in which you can run and test above mentioned functions to train the models.
+    - Contains a py file with which you can run the training through 'main'.
 
