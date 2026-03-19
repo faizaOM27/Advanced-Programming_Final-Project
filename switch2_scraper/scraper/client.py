@@ -8,11 +8,14 @@ class NintendoLifeClient:
     
     def __init__(self, delay: float = 1.0):
         self.session = requests.Session()
+        
+        # Setting a realistic User-Agent to reduce chance of request blocking
         self.session.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122.0"
         })
         self.delay = delay
         
+    # Fetches and parses a web page from NintendoLife
     def get_page(self, path: str) -> BeautifulSoup: #Type hint
         url = urljoin(self.BASE_URL, path)
         resp = self.session.get(url)

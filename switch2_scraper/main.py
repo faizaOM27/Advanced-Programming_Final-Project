@@ -18,7 +18,8 @@ def main():
         games = game_scraper.scrape_browse_page(page)
         all_games.extend(games)
         print(f'Page {page}: {len(games)} games')
-        
+    
+    # Convert games to DataFrame for analysis/ export   
     games_df = games_to_df(all_games)
     print(f'Total: {len(all_games)} games')
     
@@ -28,13 +29,16 @@ def main():
     for game in all_games:
         print(f'Processing {game.name}...')
         review_links = review_scraper.scrape_review_links(game)
+        
         for review_link in review_links:
             full_review = review_scraper.scrape_full_review(review_link)
             all_reviews.append(full_review)
-        
+    
+    # Convert reviews to structured DataFrame and save   
     reviews_df = reviews_to_df(all_reviews)
     save_reviews(reviews_df)
     
+    # Final summary
     print(f"\nFinal dataset: {len(reviews_df)} reviews from {len(games)} games")
 
 if __name__ == '__main__':
