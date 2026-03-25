@@ -1,13 +1,21 @@
 # Advanced-Programming---Final-Project
 
+## Main goal
 The main goal of this project is to scrape switch 2 reviews from NintendoLife and try to train a model on it to predict what score
 should be assigned to the review. We do this by vectorizing the review text and using this vectorization and existing scores to train
 several different models. Right now the models available for training are a random forest regressor, random forest classifier and a 
 gradient boosting model. 
 
+## Running the project
 For running this project, please create a new environment and install the depencies as listed in the requirements.txt
 Please note that some paths to the files might have to be changed accordingly, dependending on where you run the code, if you just run the functions like described below it should work.
 
+1. For scraping, run: python switch2_scraper/main.py. This will generate "switch2_reviews.csv"
+2. For vectorization, run: python switch2_vectorization/run_vectorization.py. This will generate "X_features.csv", "y_scores.csv", and "tfidf_vectorizer.pkl"
+3. Lastly for modelling, run: python switch2_modelling/run_training.py. This will train the models, print evaluation results, ad save trained models in the model/saved_models folder.
+
+
+## How everything works
 This repo consists of 3 folders, one for each step in the process. We will go over them in this file.
 
 1. switch2_scraper
